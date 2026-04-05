@@ -296,13 +296,12 @@
                 <div class="relative z-10 text-center">
                     <h2 class="text-white text-3xl font-bold mb-4 uppercase tracking-[0.2em]">Solicitar Ficha Técnica</h2>
                     <p class="text-c21gold text-xs uppercase tracking-widest mb-10 font-bold">
-                        Recibí el brochure oficial por WhatsApp a través de mi asistente virtual.
+                        Recibí el brochure oficial por WhatsApp al instante.
                     </p>
                     <form id="leadForm" class="space-y-8">
-                        <input type="text" name="nombre" id="nombre" placeholder="TU NOMBRE COMPLETO" required class="w-full bg-transparent border-b-2 border-gray-600 py-3 text-white outline-none focus:border-c21gold transition text-xs tracking-widest uppercase placeholder-gray-400">
-                        <input type="tel" name="whatsapp" id="whatsapp" placeholder="TU WHATSAPP" required class="w-full bg-transparent border-b-2 border-gray-600 py-3 text-white outline-none focus:border-c21gold transition text-xs tracking-widest uppercase placeholder-gray-400">
+                        <input type="text" name="nombre" id="nombre" placeholder="TU NOMBRE" required class="w-full bg-transparent border-b-2 border-gray-600 py-3 text-white outline-none focus:border-c21gold transition text-xs tracking-widest uppercase placeholder-gray-400 text-center">
                         <button type="submit" class="w-full bg-c21gold text-c21black py-5 font-bold uppercase tracking-[0.3em] hover:bg-white active:scale-95 transition duration-500 shadow-xl mt-6 rounded-sm">
-                            SOLICITAR FICHA TÉCNICA
+                            SOLICITAR POR WHATSAPP
                         </button>
                     </form>
                 </div>
@@ -379,15 +378,14 @@
             if (e.target === this) closeModal();
         });
 
-        // BLOQUE DE ENVÍO INTEGRADO SIN CAMBIAR TU LÓGICA
+        // BLOQUE DE ENVÍO INTEGRADO ULTRA-MINIMALISTA
         document.getElementById('leadForm').onsubmit = function(e) {
-            e.preventDefault(); // Evitamos recarga de página
+            e.preventDefault(); 
 
             const nombre = document.getElementById('nombre').value;
-            const whatsapp = document.getElementById('whatsapp').value;
             const webhookUrl = 'https://n8n.jairokov.com/webhook/1c64a5fc-178e-4a5f-bb23-93909b21839d';
 
-            // ENVÍO FETCH (CAPTURA INVISIBLE)
+            // ENVÍO FETCH (CAPTURA EL NOMBRE)
             fetch(webhookUrl, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -396,15 +394,14 @@
                 },
                 body: JSON.stringify({
                     nombre: nombre,
-                    whatsapp: whatsapp,
                     proyecto: 'TownCenter Barrio Jara',
-                    origen: 'Landing Page'
+                    origen: 'Landing Page Minimal'
                 })
             });
 
-            // SALTO A WHATSAPP (Mantenemos tu lógica de redirección)
+            // SALTO A WHATSAPP CON EL NOMBRE EN EL MENSAJE
             setTimeout(() => {
-                window.location.href = `https://wa.me/595994325713?text=Hola,%20soy%20${encodeURIComponent(nombre)}.%20Acabo%20de%20solicitar%20la%20ficha%20de%20TownCenter%20en%20la%20web.`;
+                window.location.href = `https://wa.me/595994325713?text=Hola,%20soy%20${encodeURIComponent(nombre)}.%20Quiero%20la%20ficha%20de%20TownCenter.`;
             }, 400);
         };
     </script>
