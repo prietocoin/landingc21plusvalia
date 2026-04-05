@@ -68,7 +68,7 @@
 </head>
 <body class="bg-white text-c21black antialiased">
 
-    <a href="https://wa.me/595991712966?text=Hola%20Jairo,%20quiero%20la%20ficha%20técnica%20de%20TownCenter" class="btn-float bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition">
+    <a href="https://wa.me/595994325713?text=Hola%20Jairo,%20quiero%20la%20ficha%20técnica%20de%20TownCenter" class="btn-float bg-[#25D366] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
@@ -296,11 +296,11 @@
                 <div class="relative z-10 text-center">
                     <h2 class="text-white text-3xl font-bold mb-4 uppercase tracking-[0.2em]">Solicitar Ficha Técnica</h2>
                     <p class="text-c21gold text-xs uppercase tracking-widest mb-10 font-bold">
-                        Recibí el brochure oficial, planos y lista de precios disponibles por WhatsApp.
+                        Recibí el brochure oficial por WhatsApp a través de mi asistente virtual.
                     </p>
-                    <form action="https://n8n.jairokov.com/webhook/1c64a5fc-178e-4a5f-bb23-93909b21839d" method="POST" class="space-y-8">
-                        <input type="text" name="nombre" placeholder="TU NOMBRE COMPLETO" required class="w-full bg-transparent border-b-2 border-gray-600 py-3 text-white outline-none focus:border-c21gold transition text-xs tracking-widest uppercase placeholder-gray-400">
-                        <input type="tel" name="whatsapp" placeholder="TU WHATSAPP" required class="w-full bg-transparent border-b-2 border-gray-600 py-3 text-white outline-none focus:border-c21gold transition text-xs tracking-widest uppercase placeholder-gray-400">
+                    <form id="leadForm" action="https://n8n.jairokov.com/webhook/1c64a5fc-178e-4a5f-bb23-93909b21839d" method="POST" class="space-y-8">
+                        <input type="text" name="nombre" id="nombre" placeholder="TU NOMBRE COMPLETO" required class="w-full bg-transparent border-b-2 border-gray-600 py-3 text-white outline-none focus:border-c21gold transition text-xs tracking-widest uppercase placeholder-gray-400">
+                        <input type="tel" name="whatsapp" id="whatsapp" placeholder="TU WHATSAPP" required class="w-full bg-transparent border-b-2 border-gray-600 py-3 text-white outline-none focus:border-c21gold transition text-xs tracking-widest uppercase placeholder-gray-400">
                         <button type="submit" class="w-full bg-c21gold text-c21black py-5 font-bold uppercase tracking-[0.3em] hover:bg-white active:scale-95 transition duration-500 shadow-xl mt-6 rounded-sm">
                             SOLICITAR FICHA TÉCNICA
                         </button>
@@ -323,7 +323,7 @@
             <div class="text-center md:text-right">
                 <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-4">Contacto Directo</p>
                 <div class="flex items-center justify-center md:justify-end gap-5">
-                    <a href="https://wa.me/595991712966" target="_blank" class="text-gray-300 hover:text-c21gold transition text-2xl" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/595994325713" target="_blank" class="text-gray-300 hover:text-c21gold transition text-2xl" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://instagram.com/jairoprieto_c21bonanza" target="_blank" class="text-gray-300 hover:text-c21gold transition text-2xl" title="Instagram Bonanza"><i class="fab fa-instagram"></i></a>
                     <a href="https://instagram.com/jairoprietocentury21" target="_blank" class="text-gray-300 hover:text-c21gold transition text-2xl" title="Instagram Century 21"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=61578572123378" target="_blank" class="text-gray-300 hover:text-c21gold transition text-2xl" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -378,6 +378,13 @@
         document.getElementById('modals-container').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
+
+        document.getElementById('leadForm').onsubmit = function() {
+            const nombre = document.getElementById('nombre').value;
+            setTimeout(() => {
+                window.location.href = `https://wa.me/595994325713?text=Hola,%20soy%20${nombre}.%20Acabo%20de%20solicitar%20la%20ficha%20de%20TownCenter%20en%20la%20web.`;
+            }, 500);
+        };
     </script>
 </body>
 </html>
