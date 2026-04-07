@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Portafolio Asunción | Jairo Prieto InmobFintech</title>
+    <title>Análisis de Portafolio Asunción | Jairo Prieto InmobFintech</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { 
@@ -49,30 +49,19 @@
         .card-header-fintech {
             background-color: #0a192f;
             color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px 12px 0 0;
             text-align: center;
             border-bottom: 3px solid #c5a059;
         }
         .roi-badge {
             font-weight: bold;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             display: inline-block;
             margin-bottom: 15px;
+            font-size: 0.9rem;
         }
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-        .feature-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 0.95rem;
-        }
-        .feature-list li:last-child { border-bottom: none; }
         
         /* Botones y Desplegables */
         .form-select-fintech {
@@ -80,6 +69,7 @@
             color: #0a192f;
             font-weight: 600;
             border-radius: 6px;
+            font-size: 0.85rem;
         }
         .form-select-fintech:focus {
             border-color: #0a192f;
@@ -99,6 +89,16 @@
             margin-top: 15px;
         }
         .btn-action:hover { opacity: 0.9; color: white; }
+        
+        .filter-btn {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .filter-btn.active {
+            background-color: #0a192f !important;
+            color: white !important;
+            border-color: #0a192f !important;
+        }
     </style>
 </head>
 <body>
@@ -110,10 +110,10 @@
             </p>
             <h1 class="display-5 fw-bold mb-4">
                 Asignación Inteligente de Capital: <br>
-                <span class="highlight">Rendimientos Superiores al 4.8%</span>
+                <span class="highlight">Rendimientos Superiores al 4,8%</span>
             </h1>
             <p class="lead mb-5 mx-auto" style="max-width: 700px; color: #ccd6f6;">
-                El mercado paraguayo supera a la región. Configure su estrategia de riesgo , capital en las opciones de abajo.
+                El mercado paraguayo supera a la región. Configure su estrategia paso a paso y descubra las opciones ideales para su portafolio.
             </p>
         </div>
     </header>
@@ -135,120 +135,161 @@
             <div class="col-md-4 mb-4">
                 <div class="card data-card p-4">
                     <h3 style="color: #0a192f; font-weight: bold;">Asunción Líder</h3>
-                    <p class="text-muted mb-0">Supera a Montevideo (2.6%) , Buenos Aires (3.1%)</p>
+                    <p class="text-muted mb-0">Supera a Montevideo (2,6%) , Buenos Aires (3,1%)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container my-5 py-4">
-        <div class="row g-4 mt-2">
+    <section class="container my-5 py-2">
+        <div class="text-center mb-4">
+            <div class="d-flex flex-wrap justify-content-center gap-2" id="filter-container">
+                <button class="btn filter-btn active px-3 py-2 border" onclick="filterSelection('all')" style="color: #0a192f;">Todas</button>
+                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('agresiva')" style="color: #0a192f; border-color: #c5a059 !important;">16% , 25%+ (Agresiva)</button>
+                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('moderada')" style="color: #0a192f;">11% , 15% (Plusvalía)</button>
+                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('dinamica')" style="color: #0a192f;">7% , 10,5% (Dinámica)</button>
+                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('conservadora')" style="color: #0a192f;">4,5% , 6,5% (Conservadora)</button>
+            </div>
+        </div>
+
+        <div class="row g-4">
             
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 filter-item agresiva">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #c5a059;">
                         <h5 class="mb-0">Etapa Semilla</h5>
-                        <small>Desarrollo de Zona</small>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge" style="background-color: #fff3cd; color: #856404;">Ganancia Max: 16% , 25%+</span>
+                            <span class="roi-badge" style="background-color: #fff3cd; color: #856404;">Max: 16% , 25%+</span>
                         </div>
-                        <ul class="feature-list">
-                            <li><strong>Estrategia:</strong> Apreciación total.</li>
-                            <li><strong>Perfil:</strong> Agresivo , Capitalización.</li>
-                        </ul>
                         
                         <div class="mt-auto">
-                            <label class="form-label small text-muted fw-bold">Seleccione su rango de interés:</label>
-                            <select class="form-select form-select-sm form-select-fintech" onchange="actualizarBoton(this, 'btn-semilla', 'https://towncenterbarriojara.jairoprieto.com/oferta-barrio-jara.html')">
-                                <option value="Monoambiente USD 35.000">Monoambiente (Desde USD 35.000)</option>
-                                <option value="1 Habitación USD 48.000">1 Habitación (Desde USD 48.000)</option>
-                                <option value="Multi-Unidad USD 65.000+">Inversión Múltiple (USD 65.000+)</option>
+                            <label class="form-label small text-muted fw-bold">1. Proyecto:</label>
+                            <select class="form-select form-select-sm form-select-fintech mb-2" id="c1-l1" onchange="controlarNivel1('c1', 'c1-btn')">
+                                <option value="">Seleccione...</option>
+                                <option value="towncenter">TownCenter Barrio Jara</option>
+                                <option value="mallorca">Edificio Mallorca</option>
+                                <option value="otro">Otro Proyecto</option>
                             </select>
-                            <a href="https://towncenterbarriojara.jairoprieto.com/oferta-barrio-jara.html?opcion=Monoambiente USD 35.000" id="btn-semilla" class="btn-action" style="background-color: #c5a059;">Analizar Opciones</a>
+
+                            <div id="c1-div2" style="display: none;">
+                                <label class="form-label small text-muted fw-bold mt-1">2. Tipología:</label>
+                                <select class="form-select form-select-sm form-select-fintech mb-2" id="c1-l2" onchange="controlarNivel2('c1', 'c1-btn', 'towncenter')">
+                                    <option value="">Seleccione...</option>
+                                    <option value="Monoambiente">Monoambiente</option>
+                                    <option value="Tipo A">Departamento Tipo A</option>
+                                    <option value="Tipo B">Departamento Tipo B</option>
+                                    <option value="otro">Otra Tipología</option>
+                                </select>
+                            </div>
+                            
+                            <a href="#" id="c1-btn" class="btn-action" style="background-color: #cccccc; pointer-events: none;">Completar Selección</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 filter-item moderada">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #17a2b8;">
                         <h5 class="mb-0">Pozo Avanzado</h5>
-                        <small>Cierre de Obra</small>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge" style="background-color: #d1ecf1; color: #0c5460;">Ganancia Max: 11% , 15%</span>
+                            <span class="roi-badge" style="background-color: #d1ecf1; color: #0c5460;">Max: 11% , 15%</span>
                         </div>
-                        <ul class="feature-list">
-                            <li><strong>Estrategia:</strong> Descuento final.</li>
-                            <li><strong>Perfil:</strong> Moderado , Transición.</li>
-                        </ul>
                         
                         <div class="mt-auto">
-                            <label class="form-label small text-muted fw-bold">Configurar ticket:</label>
-                            <select class="form-select form-select-sm form-select-fintech" onchange="actualizarWpp(this, 'btn-pozo', 'Hola Jairo , me interesa la opción de Pozo Avanzado con ticket de: ')">
-                                <option value="USD 55.000 , 65.000">Rango USD 55.000 , 65.000</option>
-                                <option value="USD 65.000 , 85.000">Rango USD 65.000 , 85.000</option>
+                            <label class="form-label small text-muted fw-bold">1. Zona Preferida:</label>
+                            <select class="form-select form-select-sm form-select-fintech mb-2" id="c2-l1" onchange="controlarNivel1('c2', 'c2-btn')">
+                                <option value="">Seleccione...</option>
+                                <option value="Eje Corporativo">Eje Corporativo</option>
+                                <option value="Las Mercedes">Las Mercedes</option>
+                                <option value="otro">Otra Zona</option>
                             </select>
-                            <a href="https://wa.me/595991712966?text=Hola%20Jairo%20,%20me%20interesa%20la%20opcion%20de%20Pozo%20Avanzado%20con%20ticket%20de:%20USD%2055.000%20,%2065.000" id="btn-pozo" class="btn-action" style="background-color: #17a2b8;">Ver Disponibilidad</a>
+
+                            <div id="c2-div2" style="display: none;">
+                                <label class="form-label small text-muted fw-bold mt-1">2. Ticket de Inversión:</label>
+                                <select class="form-select form-select-sm form-select-fintech mb-2" id="c2-l2" onchange="controlarNivel2('c2', 'c2-btn', 'wpp')">
+                                    <option value="">Seleccione...</option>
+                                    <option value="USD 55.000 , 65.000">USD 55.000 , 65.000</option>
+                                    <option value="USD 65.000 , 85.000">USD 65.000 , 85.000</option>
+                                    <option value="otro">Otro Presupuesto</option>
+                                </select>
+                            </div>
+                            
+                            <a href="#" id="c2-btn" class="btn-action" style="background-color: #cccccc; pointer-events: none;">Completar Selección</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 filter-item dinamica">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #28a745;">
-                        <h5 class="mb-0">Alquiler Temporal</h5>
-                        <small>Gestión , AirBnb</small>
+                        <h5 class="mb-0">Renta Temporal</h5>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge" style="background-color: #d4edda; color: #155724;">Renta Anual: 7% , 10.5%</span>
+                            <span class="roi-badge" style="background-color: #d4edda; color: #155724;">Anual: 7% , 10,5%</span>
                         </div>
-                        <ul class="feature-list">
-                            <li><strong>Estrategia:</strong> Flujo de caja dinámico.</li>
-                            <li><strong>Perfil:</strong> Ingresos Pasivos Altos.</li>
-                        </ul>
                         
                         <div class="mt-auto">
-                            <label class="form-label small text-muted fw-bold">Preferencia de Tipología:</label>
-                            <select class="form-select form-select-sm form-select-fintech" onchange="actualizarWpp(this, 'btn-temporal', 'Hola Jairo , busco activos para AirBnb , me enfoco en: ')">
-                                <option value="Zonas Premium (USD 75.000+)">Zonas Premium (USD 75.000+)</option>
-                                <option value="Eje Corporativo (USD 90.000+)">Eje Corporativo (USD 90.000+)</option>
+                            <label class="form-label small text-muted fw-bold">1. Ubicación Estratégica:</label>
+                            <select class="form-select form-select-sm form-select-fintech mb-2" id="c3-l1" onchange="controlarNivel1('c3', 'c3-btn')">
+                                <option value="">Seleccione...</option>
+                                <option value="Zonas Premium">Zonas Premium</option>
+                                <option value="Centros Financieros">Centros Financieros</option>
+                                <option value="otro">Otra Ubicación</option>
                             </select>
-                            <a href="https://wa.me/595991712966?text=Hola%20Jairo%20,%20busco%20activos%20para%20AirBnb%20,%20me%20enfoco%20en:%20Zonas%20Premium%20(USD%2075.000+)" id="btn-temporal" class="btn-action" style="background-color: #28a745;">Consultar Flujo</a>
+
+                            <div id="c3-div2" style="display: none;">
+                                <label class="form-label small text-muted fw-bold mt-1">2. Tipo de Unidad:</label>
+                                <select class="form-select form-select-sm form-select-fintech mb-2" id="c3-l2" onchange="controlarNivel2('c3', 'c3-btn', 'wpp')">
+                                    <option value="">Seleccione...</option>
+                                    <option value="Monoambiente Amoblado">Monoambiente Amoblado</option>
+                                    <option value="1 Habitación">1 Habitación</option>
+                                    <option value="otro">Otra Unidad</option>
+                                </select>
+                            </div>
+                            
+                            <a href="#" id="c3-btn" class="btn-action" style="background-color: #cccccc; pointer-events: none;">Completar Selección</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 filter-item conservadora">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #6c757d;">
-                        <h5 class="mb-0">Alquiler Tradicional</h5>
-                        <small>Contratos Vigentes</small>
+                        <h5 class="mb-0">Renta Tradicional</h5>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge" style="background-color: #e2e3e5; color: #383d41;">Renta Anual: 4.5% , 6.5%</span>
+                            <span class="roi-badge" style="background-color: #e2e3e5; color: #383d41;">Anual: 4,5% , 6,5%</span>
                         </div>
-                        <ul class="feature-list">
-                            <li><strong>Estrategia:</strong> Renta fija garantizada.</li>
-                            <li><strong>Perfil:</strong> Conservador , Seguro.</li>
-                        </ul>
                         
                         <div class="mt-auto">
-                            <label class="form-label small text-muted fw-bold">Volumen de Capital:</label>
-                            <select class="form-select form-select-sm form-select-fintech" onchange="actualizarWpp(this, 'btn-tradicional', 'Hola Jairo , solicito portafolio de Renta Tradicional con capital de: ')">
-                                <option value="USD 90.000 , 150.000">USD 90.000 , 150.000</option>
-                                <option value="USD 150.000 , 250.000">USD 150.000 , 250.000</option>
-                                <option value="Más de USD 250.000">Más de USD 250.000</option>
+                            <label class="form-label small text-muted fw-bold">1. Tipo de Activo:</label>
+                            <select class="form-select form-select-sm form-select-fintech mb-2" id="c4-l1" onchange="controlarNivel1('c4', 'c4-btn')">
+                                <option value="">Seleccione...</option>
+                                <option value="Residencial (Departamentos)">Residencial</option>
+                                <option value="Comercial (Locales)">Comercial</option>
+                                <option value="otro">Otro Activo</option>
                             </select>
-                            <a href="https://wa.me/595991712966?text=Hola%20Jairo%20,%20solicito%20portafolio%20de%20Renta%20Tradicional%20con%20capital%20de:%20USD%2090.000%20,%20150.000" id="btn-tradicional" class="btn-action" style="background-color: #6c757d;">Ver Portafolio</a>
+
+                            <div id="c4-div2" style="display: none;">
+                                <label class="form-label small text-muted fw-bold mt-1">2. Volumen de Capital:</label>
+                                <select class="form-select form-select-sm form-select-fintech mb-2" id="c4-l2" onchange="controlarNivel2('c4', 'c4-btn', 'wpp')">
+                                    <option value="">Seleccione...</option>
+                                    <option value="USD 90.000 , 150.000">USD 90.000 , 150.000</option>
+                                    <option value="USD 150.000 , 250.000+">USD 150.000 , 250.000+</option>
+                                    <option value="otro">Otro Volumen</option>
+                                </select>
+                            </div>
+                            
+                            <a href="#" id="c4-btn" class="btn-action" style="background-color: #cccccc; pointer-events: none;">Completar Selección</a>
                         </div>
                     </div>
                 </div>
@@ -262,28 +303,96 @@
             <p class="text-muted fw-bold mb-1">Jairo Prieto | Asesor InmobFintech</p>
             <p class="text-muted small mb-0">Century 21 Bonanza</p>
             <p class="mt-3" style="font-size: 11px; color: #6c757d;">
-                Aviso: Los datos de rentabilidad mostrados son referenciales , se basan en el análisis de mercado de Asunción (Q1 2026). Las inversiones inmobiliarias conllevan riesgos asociados al mercado.
+                Aviso: Los datos de rentabilidad mostrados son referenciales , se basan en el análisis de mercado de Asunción. Las inversiones conllevan riesgos.
             </p>
         </div>
     </footer>
 
     <script>
-        // Función para enlaces de la misma web (TownCenter)
-        function actualizarBoton(selectElement, btnId, urlBase) {
+        // Configuración general
+        const wppBaseUrl = "https://wa.me/595991712966?text=";
+
+        // Función cuando eligen la Opción 1 de cualquier tarjeta
+        function controlarNivel1(cardPrefix, btnId) {
+            var val1 = document.getElementById(cardPrefix + '-l1').value;
+            var div2 = document.getElementById(cardPrefix + '-div2');
             var btn = document.getElementById(btnId);
-            var seleccion = selectElement.value;
-            // Pasa la selección como un parámetro en la URL
-            btn.href = urlBase + "?opcion=" + encodeURIComponent(seleccion);
+            
+            // Estado inicial del botón (Bloqueado)
+            btn.style.backgroundColor = '#cccccc';
+            btn.style.pointerEvents = 'none';
+            btn.innerText = 'Completar Selección';
+            btn.href = '#';
+
+            if (val1 === 'otro' || val1 === 'mallorca') {
+                // Si es "otro" o un proyecto externo, saltamos el paso 2 y habilitamos contacto
+                div2.style.display = 'none';
+                activarBotonWpp(btn, "Hola Jairo , busco opciones relacionadas a: " + val1);
+            } else if (val1 !== '') {
+                // Si eligen algo válido (ej: TownCenter , Eje Corporativo) mostramos el paso 2
+                div2.style.display = 'block';
+                document.getElementById(cardPrefix + '-l2').value = ""; // Limpia el nivel 2
+            } else {
+                div2.style.display = 'none';
+            }
         }
 
-        // Función para enlaces de WhatsApp (Evolution API / n8n)
-        function actualizarWpp(selectElement, btnId, textoBase) {
+        // Función cuando eligen la Opción 2 de cualquier tarjeta
+        function controlarNivel2(cardPrefix, btnId, modo) {
+            var val1 = document.getElementById(cardPrefix + '-l1').value;
+            var val2 = document.getElementById(cardPrefix + '-l2').value;
             var btn = document.getElementById(btnId);
-            var seleccion = selectElement.value;
-            var mensajeCompleto = textoBase + seleccion;
-            // Actualiza la URL de la API de WhatsApp
-            btn.href = "https://wa.me/595991712966?text=" + encodeURIComponent(mensajeCompleto);
+
+            if (val2 !== "") {
+                if (modo === 'towncenter' && val2 !== 'otro') {
+                    // Especial para TownCenter (va a la Landing)
+                    btn.style.backgroundColor = '#c5a059'; 
+                    btn.style.pointerEvents = 'auto'; 
+                    btn.innerText = 'Analizar Proyecto';
+                    btn.href = "https://towncenterbarriojara.jairoprieto.com/towncenterbarriojara.html?tipologia=" + encodeURIComponent(val2);
+                } else {
+                    // Para todos los demás (incluyendo si seleccionan "otro" en el paso 2)
+                    var mensaje = "Hola Jairo , me interesa la opción de " + val1 + " con la especificación: " + val2;
+                    activarBotonWpp(btn, mensaje);
+                }
+            } else {
+                // Si dejan el paso 2 en blanco
+                btn.style.backgroundColor = '#cccccc';
+                btn.style.pointerEvents = 'none';
+                btn.innerText = 'Completar Selección';
+            }
         }
+
+        // Función de apoyo para encender el botón hacia WhatsApp
+        function activarBotonWpp(btn, texto) {
+            btn.style.backgroundColor = '#c5a059';
+            btn.style.pointerEvents = 'auto';
+            btn.innerText = 'Consultar a Jairo';
+            btn.href = wppBaseUrl + encodeURIComponent(texto);
+        }
+
+        // Script de filtro visual de las tarjetas (pills)
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filter-item");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                if (x[i].className.indexOf(c) > -1) {
+                    x[i].style.display = "block";
+                }
+            }
+            var btns = document.getElementsByClassName("filter-btn");
+            for (var j = 0; j < btns.length; j++) {
+                btns[j].classList.remove("active");
+            }
+            event.currentTarget.classList.add("active");
+        }
+        
+        // Iniciar mostrando todo
+        document.addEventListener("DOMContentLoaded", function() {
+            filterSelection('all');
+        });
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
