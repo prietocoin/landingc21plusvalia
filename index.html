@@ -117,7 +117,7 @@
                 <span class="highlight">Rendimientos Superiores al 4,8%</span>
             </h1>
             <p class="lead mb-5 mx-auto" style="max-width: 700px; color: #ccd6f6;">
-                El mercado paraguayo supera a la región. Configure su estrategia paso a paso y descubra las opciones ideales para su portafolio.
+                El mercado paraguayo supera a la región. Configure su estrategia paso a paso , descubra las opciones ideales para su portafolio.
             </p>
         </div>
     </header>
@@ -359,11 +359,12 @@
 
             if (val2 !== "") {
                 if (modo === 'towncenter' && val2 !== 'otro') {
-                    // Especial para TownCenter (va a la Landing)
+                    // Especial para TownCenter (va a la Landing raíz sin nombrar el .html)
                     btn.style.backgroundColor = '#c5a059'; 
                     btn.style.pointerEvents = 'auto'; 
                     btn.innerText = 'Ver el Proyecto';
-                    btn.href = "https://towncenterbarriojara.jairoprieto.com/towncenterbarriojara.html?tipologia=" + encodeURIComponent(val2);
+                    // URL Corregida hacia la raíz del subdominio
+                    btn.href = "https://towncenterbarriojara.jairoprieto.com/?tipologia=" + encodeURIComponent(val2);
                 } else {
                     // Para todos los demás
                     var mensaje = "Hola Jairo , me interesa la opción de " + val1 + " con la especificación: " + val2;
