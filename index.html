@@ -54,10 +54,6 @@
             text-align: center;
             border-bottom: 3px solid #c5a059;
         }
-        .card-header-vip {
-            background-color: #112240;
-            border-bottom: 3px solid #8892b0;
-        }
         .ticket-range {
             font-size: 1.5rem;
             font-weight: 700;
@@ -66,17 +62,11 @@
             text-align: center;
         }
         .roi-badge {
-            background-color: #e6f4ea;
-            color: #1e8e3e;
             font-weight: bold;
             padding: 8px 12px;
             border-radius: 6px;
             display: inline-block;
             margin-bottom: 15px;
-        }
-        .roi-badge-neutral {
-            background-color: #e8f0fe;
-            color: #1a73e8;
         }
         .feature-list {
             list-style: none;
@@ -91,9 +81,8 @@
         }
         .feature-list li:last-child { border-bottom: none; }
         
-        /* Botones */
+        /* Botones y Filtros */
         .btn-action { 
-            background-color: #c5a059; 
             color: #fff; 
             font-weight: 600; 
             padding: 12px 20px; 
@@ -103,10 +92,19 @@
             text-align: center;
             transition: 0.2s;
             border: none;
+            display: block;
         }
-        .btn-action:hover { background-color: #b08d4b; color: white; }
-        .btn-vip { background-color: #0a192f; }
-        .btn-vip:hover { background-color: #112240; }
+        .btn-action:hover { opacity: 0.9; color: white; }
+        
+        .filter-btn {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .filter-btn.active {
+            background-color: #0a192f !important;
+            color: white !important;
+            border-color: #0a192f !important;
+        }
     </style>
 </head>
 <body>
@@ -118,10 +116,10 @@
             </p>
             <h1 class="display-5 fw-bold mb-4">
                 Asignación Inteligente de Capital: <br>
-                <span class="highlight">Rendimientos Superiores al 4.8%</span>
+                <span class="highlight">Rendimientos Superiores al 4,8%</span>
             </h1>
             <p class="lead mb-5 mx-auto" style="max-width: 700px; color: #ccd6f6;">
-                El mercado paraguayo supera a la región. Seleccione su perfil de liquidez , riesgo para acceder a los activos más eficientes del mercado.
+                El mercado paraguayo supera a la región. Filtre las oportunidades según su perfil de liquidez , riesgo para acceder a los activos más eficientes.
             </p>
         </div>
     </header>
@@ -143,95 +141,109 @@
             <div class="col-md-4 mb-4">
                 <div class="card data-card p-4">
                     <h3 style="color: #0a192f; font-weight: bold;">Asunción Líder</h3>
-                    <p class="text-muted mb-0">Supera a Montevideo (2.6%) , Buenos Aires (3.1%)</p>
+                    <p class="text-muted mb-0">Supera a Montevideo (2,6%) , Buenos Aires (3,1%)</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="container my-5 py-4">
-        <div class="row g-4">
+        
+        <div class="text-center mb-5">
+            <h2 class="fw-bold" style="color: #0a192f;">Seleccione su Objetivo de Retorno</h2>
+            <p class="text-muted">Filtre las oportunidades según su perfil de riesgo , horizonte de inversión.</p>
             
-            <div class="col-lg-3 col-md-6">
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-4" id="filter-container">
+                <button class="btn filter-btn active px-4 py-2 border" onclick="filterSelection('all')" style="color: #0a192f;">Todas</button>
+                <button class="btn filter-btn px-4 py-2 border" onclick="filterSelection('conservadora')" style="color: #0a192f;">4,5% , 6,5% (Conservadora)</button>
+                <button class="btn filter-btn px-4 py-2 border" onclick="filterSelection('dinamica')" style="color: #0a192f;">7% , 10,5% (Dinámica)</button>
+                <button class="btn filter-btn px-4 py-2 border" onclick="filterSelection('moderada')" style="color: #0a192f;">11% , 15% (Plusvalía)</button>
+                <button class="btn filter-btn px-4 py-2 border" onclick="filterSelection('agresiva')" style="color: #0a192f; border-color: #c5a059 !important;">16% , 25%+ (Agresiva)</button>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+            
+            <div class="col-lg-3 col-md-6 filter-item agresiva">
                 <div class="investment-card">
-                    <div class="card-header-fintech">
-                        <h5 class="mb-0">Fondo de Capitalización</h5>
-                        <small>Alta Plusvalía</small>
+                    <div class="card-header-fintech" style="border-bottom-color: #c5a059;">
+                        <h5 class="mb-0">Etapa Semilla</h5>
+                        <small>Desarrollo de Zona</small>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge">ROI Obj: 15% , 20%</span>
+                            <span class="roi-badge" style="background-color: #fff3cd; color: #856404;">Ganancia: 16% , 25%</span>
                         </div>
-                        <div class="ticket-range">USD 35.000 , 75.000</div>
+                        <div class="ticket-range">USD 35.000 , 65.000</div>
                         <ul class="feature-list">
-                            <li><strong>Etapa:</strong> Pre-Pozo , Semilla</li>
-                            <li><strong>Estrategia:</strong> Ganancia por apreciación durante la obra.</li>
-                            <li><strong>Perfil:</strong> Crecimiento patrimonial.</li>
+                            <li><strong>Estrategia:</strong> Apreciación total de obra.</li>
+                            <li><strong>Perfil:</strong> Agresivo , Capitalización.</li>
+                            <li><strong>Liquidez:</strong> 24 , 36 meses.</li>
                         </ul>
-                        <a href="https://towncenterbarriojara.jairoprieto.com/oferta-barrio-jara.html" class="btn-action mt-auto">Analizar Pre-Pozos</a>
+                        <a href="https://towncenterbarriojara.jairoprieto.com/oferta-barrio-jara.html" class="btn-action mt-auto" style="background-color: #c5a059;">Analizar Opciones</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 filter-item moderada">
                 <div class="investment-card">
-                    <div class="card-header-fintech">
-                        <h5 class="mb-0">Fondo Equilibrado</h5>
-                        <small>Crecimiento , Renta</small>
+                    <div class="card-header-fintech" style="border-bottom-color: #17a2b8;">
+                        <h5 class="mb-0">Pozo Avanzado</h5>
+                        <small>Cierre de Obra</small>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge roi-badge-neutral">ROI Obj: 8% , 10%</span>
+                            <span class="roi-badge" style="background-color: #d1ecf1; color: #0c5460;">Ganancia: 11% , 15%</span>
                         </div>
-                        <div class="ticket-range">USD 60.000 , 95.000</div>
+                        <div class="ticket-range">USD 55.000 , 85.000</div>
                         <ul class="feature-list">
-                            <li><strong>Etapa:</strong> Pozo Avanzado , Terminaciones</li>
-                            <li><strong>Estrategia:</strong> Mitigación de riesgo con entrega a corto plazo.</li>
-                            <li><strong>Perfil:</strong> Moderado.</li>
+                            <li><strong>Estrategia:</strong> Descuento final antes de entrega.</li>
+                            <li><strong>Perfil:</strong> Moderado , Transición.</li>
+                            <li><strong>Liquidez:</strong> 6 , 12 meses.</li>
                         </ul>
-                        <a href="https://wa.me/595991712966?text=Hola%20Jairo,%20quiero%20informacion%20sobre%20el%20Fondo%20Equilibrado%20(Pozo%20Avanzado)" class="btn-action mt-auto">Ver Portafolio Medio</a>
+                        <a href="https://wa.me/595991712966?text=Solicito%20datos%20sobre%20ganancia%20del%2011%20al%2015%20por%20ciento" class="btn-action mt-auto" style="background-color: #17a2b8;">Ver Disponibilidad</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 filter-item dinamica">
                 <div class="investment-card">
-                    <div class="card-header-fintech">
-                        <h5 class="mb-0">Fondo Cash Flow</h5>
-                        <small>Renta Activa</small>
+                    <div class="card-header-fintech" style="border-bottom-color: #28a745;">
+                        <h5 class="mb-0">Alquiler Temporal</h5>
+                        <small>Gestión Corporativa , AirBnb</small>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge roi-badge-neutral">Renta: 4.8% , 7% Anual</span>
+                            <span class="roi-badge" style="background-color: #d4edda; color: #155724;">Renta: 7% , 10,5% Anual</span>
                         </div>
-                        <div class="ticket-range">USD 80.000 , 150.000+</div>
+                        <div class="ticket-range">USD 75.000 , 110.000</div>
                         <ul class="feature-list">
-                            <li><strong>Etapa:</strong> 100% Terminado , Amoblado</li>
-                            <li><strong>Estrategia:</strong> Liquidez inmediata mediante renta tradicional , Airbnb.</li>
-                            <li><strong>Perfil:</strong> Conservador.</li>
+                            <li><strong>Estrategia:</strong> Flujo de caja optimizado.</li>
+                            <li><strong>Perfil:</strong> Ingresos Pasivos Altos.</li>
+                            <li><strong>Liquidez:</strong> Inmediata.</li>
                         </ul>
-                        <a href="https://wa.me/595991712966?text=Hola%20Jairo,%20busco%20opciones%20de%20Renta%20Inmediata%20(Activos%20Terminados)" class="btn-action mt-auto">Consultar Activos</a>
+                        <a href="https://wa.me/595991712966?text=Solicito%20datos%20sobre%20renta%20dinamica%20temporal" class="btn-action mt-auto" style="background-color: #28a745;">Consultar Flujo</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 filter-item conservadora">
                 <div class="investment-card">
-                    <div class="card-header-fintech card-header-vip">
-                        <h5 class="mb-0">Private Banking</h5>
-                        <small>Estructuración a Medida</small>
+                    <div class="card-header-fintech" style="border-bottom-color: #6c757d;">
+                        <h5 class="mb-0">Alquiler Tradicional</h5>
+                        <small>Contratos Vigentes</small>
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <div class="text-center">
-                            <span class="roi-badge" style="background-color:#f1f3f4; color:#5f6368;">ROI Variable</span>
+                            <span class="roi-badge" style="background-color: #e2e3e5; color: #383d41;">Renta: 4,5% , 6,5% Anual</span>
                         </div>
-                        <div class="ticket-range">Capital Flexible</div>
+                        <div class="ticket-range">USD 90.000 , 250.000+</div>
                         <ul class="feature-list">
-                            <li><strong>Vehículos:</strong> Locales , Terrenos , Multi-unidades.</li>
-                            <li><strong>Estrategia:</strong> Diseño de portafolio exclusivo según requerimiento.</li>
-                            <li><strong>Perfil:</strong> Corporativo , Alto Patrimonio.</li>
+                            <li><strong>Estrategia:</strong> Renta fija a largo plazo.</li>
+                            <li><strong>Perfil:</strong> Conservador , Preservación.</li>
+                            <li><strong>Liquidez:</strong> Inmediata con garantías.</li>
                         </ul>
-                        <a href="https://wa.me/595991712966?text=Hola%20Jairo,%20requiero%20una%20sesion%20de%20Estructuracion%20a%20Medida%20(Private%20Banking)" class="btn-action btn-vip mt-auto">Solicitar Asesoría VIP</a>
+                        <a href="https://wa.me/595991712966?text=Solicito%20datos%20sobre%20renta%20conservadora" class="btn-action mt-auto" style="background-color: #6c757d;">Ver Portafolio</a>
                     </div>
                 </div>
             </div>
@@ -249,6 +261,34 @@
         </div>
     </footer>
 
+    <script>
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filter-item");
+            if (c == "all") c = "";
+            
+            // Recorrer las tarjetas y ocultar/mostrar según la clase
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                if (x[i].className.indexOf(c) > -1) {
+                    x[i].style.display = "block";
+                }
+            }
+
+            // Actualizar el estado activo del botón presionado
+            var btns = document.getElementsByClassName("filter-btn");
+            for (var j = 0; j < btns.length; j++) {
+                btns[j].classList.remove("active");
+            }
+            event.currentTarget.classList.add("active");
+        }
+        
+        // Ejecutar el filtro 'all' al cargar la página para mostrar todas las tarjetas
+        document.addEventListener("DOMContentLoaded", function() {
+            filterSelection('all');
+        });
+    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
