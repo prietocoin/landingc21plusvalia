@@ -63,7 +63,7 @@
             font-size: 0.9rem;
         }
         
-        /* Botones y Desplegables */
+        /* Desplegables y Botones */
         .form-select-fintech {
             border: 1px solid #c5a059;
             color: #0a192f;
@@ -89,16 +89,6 @@
             margin-top: 15px;
         }
         .btn-action:hover { opacity: 0.9; color: white; }
-        
-        .filter-btn {
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .filter-btn.active {
-            background-color: #0a192f !important;
-            color: white !important;
-            border-color: #0a192f !important;
-        }
     </style>
 </head>
 <body>
@@ -142,19 +132,9 @@
     </section>
 
     <section class="container my-5 py-2">
-        <div class="text-center mb-4">
-            <div class="d-flex flex-wrap justify-content-center gap-2" id="filter-container">
-                <button class="btn filter-btn active px-3 py-2 border" onclick="filterSelection('all')" style="color: #0a192f;">Todas</button>
-                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('agresiva')" style="color: #0a192f; border-color: #c5a059 !important;">16% , 25%+ (Agresiva)</button>
-                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('moderada')" style="color: #0a192f;">11% , 15% (Plusvalía)</button>
-                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('dinamica')" style="color: #0a192f;">7% , 10,5% (Dinámica)</button>
-                <button class="btn filter-btn px-3 py-2 border" onclick="filterSelection('conservadora')" style="color: #0a192f;">4,5% , 6,5% (Conservadora)</button>
-            </div>
-        </div>
-
         <div class="row g-4">
             
-            <div class="col-lg-3 col-md-6 filter-item agresiva">
+            <div class="col-lg-3 col-md-6">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #c5a059;">
                         <h5 class="mb-0">Etapa Semilla</h5>
@@ -190,7 +170,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 filter-item moderada">
+            <div class="col-lg-3 col-md-6">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #17a2b8;">
                         <h5 class="mb-0">Pozo Avanzado</h5>
@@ -225,7 +205,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 filter-item dinamica">
+            <div class="col-lg-3 col-md-6">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #28a745;">
                         <h5 class="mb-0">Renta Temporal</h5>
@@ -260,7 +240,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 filter-item conservadora">
+            <div class="col-lg-3 col-md-6">
                 <div class="investment-card">
                     <div class="card-header-fintech" style="border-bottom-color: #6c757d;">
                         <h5 class="mb-0">Renta Tradicional</h5>
@@ -348,7 +328,7 @@
                     // Especial para TownCenter (va a la Landing)
                     btn.style.backgroundColor = '#c5a059'; 
                     btn.style.pointerEvents = 'auto'; 
-                    btn.innerText = 'Analizar Proyecto';
+                    btn.innerText = 'Ver el Proyecto';
                     btn.href = "https://towncenterbarriojara.jairoprieto.com/towncenterbarriojara.html?tipologia=" + encodeURIComponent(val2);
                 } else {
                     // Para todos los demás (incluyendo si seleccionan "otro" en el paso 2)
@@ -367,32 +347,9 @@
         function activarBotonWpp(btn, texto) {
             btn.style.backgroundColor = '#c5a059';
             btn.style.pointerEvents = 'auto';
-            btn.innerText = 'Consultar a Jairo';
+            btn.innerText = 'Ver el Proyecto';
             btn.href = wppBaseUrl + encodeURIComponent(texto);
         }
-
-        // Script de filtro visual de las tarjetas (pills)
-        function filterSelection(c) {
-            var x, i;
-            x = document.getElementsByClassName("filter-item");
-            if (c == "all") c = "";
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-                if (x[i].className.indexOf(c) > -1) {
-                    x[i].style.display = "block";
-                }
-            }
-            var btns = document.getElementsByClassName("filter-btn");
-            for (var j = 0; j < btns.length; j++) {
-                btns[j].classList.remove("active");
-            }
-            event.currentTarget.classList.add("active");
-        }
-        
-        // Iniciar mostrando todo
-        document.addEventListener("DOMContentLoaded", function() {
-            filterSelection('all');
-        });
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
