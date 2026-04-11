@@ -20,7 +20,7 @@
             background-image: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.9)),
                 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80');
             background-size: cover; background-attachment: fixed; background-position: center;
-            font-family: 'Inter', -apple-system, sans-serif; color: var(--white);
+            font-family: 'Inter', sans-serif; color: var(--white);
             min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0;
         }
 
@@ -34,13 +34,11 @@
         .brand-header { 
             font-size: 0.85rem; letter-spacing: 5px; color: var(--gold); 
             text-transform: uppercase; margin-bottom: 30px; font-weight: 800; 
-            text-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
         }
 
-        h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 30px; line-height: 1.1; letter-spacing: -1px; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 30px; line-height: 1.1; }
         .highlight { color: var(--gold); }
 
-        /* Contenedor de pasos */
         .step-container { display: none; text-align: left; animation: fadeIn 0.4s ease; }
         .step-container.active { display: block; }
 
@@ -48,39 +46,34 @@
 
         .question-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 25px; color: var(--white); border-left: 4px solid var(--gold); padding-left: 15px; }
 
-        /* Opciones */
+        .name-input {
+            background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            border-radius: 8px; padding: 20px; color: white; width: 100%;
+            font-size: 1.2rem; margin-bottom: 20px; outline: none;
+        }
+        .name-input:focus { border-color: var(--gold); }
+
         .option-card {
             background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
             border-radius: 12px; padding: 18px; margin-bottom: 12px; cursor: pointer;
             transition: 0.3s; display: flex; align-items: center;
         }
         .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); transform: translateX(5px); }
-        .option-card b { color: var(--gold); display: block; margin-bottom: 2px; font-size: 1rem; text-transform: uppercase; }
-        .option-card span { font-size: 0.85rem; color: var(--slate); font-weight: 500; }
+        .option-card b { color: var(--gold); display: block; font-size: 1rem; text-transform: uppercase; }
+        .option-card span { font-size: 0.85rem; color: var(--slate); }
 
         .btn-action {
             background: linear-gradient(135deg, var(--gold) 0%, #9c7e46 100%);
             color: #000; border: none; padding: 20px 45px; font-weight: 900;
             border-radius: 6px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4); margin-top: 10px; transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4); margin-top: 10px;
         }
-        .btn-action:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(197, 160, 89, 0.6); }
 
-        /* Módulos de la landing */
-        .investment-modules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 40px; padding: 25px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
-        .module-item b { display: block; font-size: 0.85rem; color: var(--gold); text-transform: uppercase; }
-        .module-item span { font-size: 0.65rem; color: var(--slate); font-weight: 600; }
+        .investment-modules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 40px; padding: 20px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
+        .module-item b { display: block; font-size: 0.8rem; color: var(--gold); }
+        .module-item span { font-size: 0.65rem; color: var(--slate); }
 
-        /* Arreglo del ticket para evitar salto de línea feo */
-        .no-wrap { white-space: nowrap; }
-
-        .terminal-footer { margin-top: 40px; display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(255,255,255,0.3); font-weight: 600; }
-
-        @media (max-width: 768px) { 
-            h1 { font-size: 1.8rem; } 
-            .investment-modules { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .glass-terminal { padding: 40px 20px; }
-        }
+        @media (max-width: 768px) { h1 { font-size: 1.8rem; } .investment-modules { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -89,28 +82,29 @@
         <div id="intro-view">
             <div class="brand-header">CENTURY 21 BONANZA // Jairo Prieto</div>
             <h1>Ingeniería de <span class="highlight">Plusvalía</span> en Asunción</h1>
-            
             <div class="investment-modules">
                 <div class="module-item"><b>Plusvalía</b><span>Pre-Pozo</span></div>
                 <div class="module-item"><b>Consolidación</b><span>Pozo Avanzado</span></div>
                 <div class="module-item"><b>Escala</b><span>Int. Compuesto</span></div>
                 <div class="module-item"><b>Renta</b><span>Flujo Soporte</span></div>
             </div>
-
-            <p class="mb-5 mx-auto lead" style="color: #ccd6f6; max-width: 600px;">
-                Acceda a activos urbanos de alta rentabilidad con tickets desde <span class="no-wrap text-white fw-bold">USD 50.000 , 00</span>.
-            </p>
-
+            <p class="mb-5 lead" style="color: #ccd6f6;">Tickets desde <span style="white-space: nowrap;" class="text-white fw-bold">USD 50.000 , 00</span></p>
             <button class="btn-action" onclick="startProfiler()">Configurar Inversión</button>
+        </div>
+
+        <div id="step-0" class="step-container">
+            <div class="question-title">Para iniciar, ¿Cómo deberíamos dirigirnos a usted?</div>
+            <input type="text" id="user-name" class="name-input" placeholder="Escriba su nombre aquí..." autocomplete="off">
+            <button class="btn-action w-100" onclick="saveName()">Continuar</button>
         </div>
 
         <div id="step-1" class="step-container">
             <div class="question-title">¿Cuál es el objetivo principal del capital?</div>
             <div class="option-card" onclick="saveData('objetivo', 'Arbitraje de Salida Rápida', 2)">
-                <div><b>Arbitraje (Salida Rápida)</b><span>Reventa en obra avanzada (ciclo < 12 meses).</span></div>
+                <div><b>Arbitraje (Salida Rápida)</b><span>Reventa en obra avanzada (ciclo corto).</span></div>
             </div>
             <div class="option-card" onclick="saveData('objetivo', 'Plusvalía Máxima', 2)">
-                <div><b>Plusvalía Máxima</b><span>Captura desde Lista Cero (Fase Semilla).</span></div>
+                <div><b>Plusvalía Máxima</b><span>Captura total desde Lista Cero (Fase Semilla).</span></div>
             </div>
             <div class="option-card" onclick="saveData('objetivo', 'Flujo y Escala', 2)">
                 <div><b>Renta y Escala</b><span>Generación de activos para interés compuesto.</span></div>
@@ -126,26 +120,23 @@
                 <div><b>USD 100.000 , 00 — 150.000 , 00</b><span>Unidades Premium o múltiples núcleos.</span></div>
             </div>
             <div class="option-card" onclick="saveData('rango', 'Superior a 150k', 3)">
-                <div><b>Superior a USD 150.000 , 00</b><span>Estructuración de Portafolio Multi-activo.</span></div>
+                <div><b>Superior a USD 150.000 , 00</b><span>Estructuración de Portafolio.</span></div>
             </div>
         </div>
 
         <div id="step-3" class="step-container">
             <div class="question-title">Seleccione el cuadrante de posicionamiento:</div>
-            <div class="option-card" onclick="saveData('zona', 'Núcleo Corporativo', 4)">
+            <div class="option-card" onclick="saveData('zona', 'Núcleo: Las Lomas / Carmelitas', 4)">
                 <div><b>El Núcleo</b><span>Las Lomas, Carmelitas, Manorá e Ycua Sati.</span></div>
             </div>
-            <div class="option-card" onclick="saveData('zona', 'Derrame Norte (Crecimiento)', 4)">
-                <div><b>Derrame Norte</b><span>Barrio Jara, Mburucuyá, Virgen del Huerto y cercanos.</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Derrame Norte: B° Jara / Mburucuyá', 4)">
+                <div><b>Derrame Norte</b><span>Barrio Jara, Mburucuyá, V. del Huerto y cercanos.</span></div>
             </div>
-            <div class="option-card" onclick="saveData('zona', 'Derrame Sur (Consolidación)', 4)">
+            <div class="option-card" onclick="saveData('zona', 'Derrame Sur: Villa Morra / Recoleta', 4)">
                 <div><b>Derrame Sur</b><span>Villa Morra, Recoleta, Mcal. Estigarribia y cercanos.</span></div>
             </div>
-            <div class="option-card" onclick="saveData('zona', 'Derrame Este (Expansión)', 4)">
-                <div><b>Derrame Este</b><span>Santa Teresa, Curda, Isla Bogado y cercanos.</span></div>
-            </div>
             <div class="option-card" onclick="saveData('zona', 'Análisis Basado en ROI', 4)">
-                <div><b>Análisis Multi-Zona</b><span>Priorizar el rendimiento (ROI) sobre el cuadrante.</span></div>
+                <div><b>Análisis Multi-Zona</b><span>Priorizar el rendimiento sobre el cuadrante.</span></div>
             </div>
         </div>
 
@@ -164,21 +155,24 @@
 
         <div id="step-5" class="step-container text-center">
             <div class="question-title text-center">Configuración Finalizada</div>
-            <p style="color: #8892b0; margin-bottom: 30px; font-size: 1.1rem;">La terminal ha procesado su perfil estratégico.</p>
+            <p style="color: #8892b0; margin-bottom: 30px;">La terminal ha procesado su perfil estratégico.</p>
             <button class="btn-action" onclick="sendWhatsApp()">RECIBIR ESTRATEGIA POR WHATSAPP</button>
-        </div>
-
-        <div class="terminal-footer">
-            <div>CENTURY 21 BONANZA // 2026</div>
-            <div class="d-none d-md-block">STATUS: MERCADO ALPHA // LIQUIDEZ ALTA</div>
         </div>
     </div>
 
     <script>
-        let leadData = { objetivo: '', rango: '', zona: '', timing: '' };
+        let leadData = { nombre: '', objetivo: '', rango: '', zona: '', timing: '' };
 
         function startProfiler() {
             document.getElementById('intro-view').style.display = 'none';
+            document.getElementById('step-0').classList.add('active');
+        }
+
+        function saveName() {
+            const name = document.getElementById('user-name').value;
+            if (name.trim() === "") { alert("Por favor, ingrese su nombre."); return; }
+            leadData.nombre = name;
+            document.getElementById('step-0').classList.remove('active');
             document.getElementById('step-1').classList.add('active');
         }
 
@@ -188,25 +182,18 @@
             document.getElementById('step-' + nextStep).classList.add('active');
         }
 
-        async function sendWhatsApp() {
-            // URL opcional para tu Webhook de n8n
-            const webhookURL = "TU_WEBHOOK_AQUÍ";
+        function sendWhatsApp() {
+            // NÚMERO ACTUALIZADO
+            const phone = "595994325713";
+            const text = `Hola Jairo, soy ${leadData.nombre}. Acabo de configurar mi perfil Alpha en la terminal Century 21 Bonanza:
 
-            try {
-                fetch(webhookURL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(leadData)
-                });
-            } catch (e) {}
+- Objetivo: ${leadData.objetivo}
+- Rango: ${leadData.rango}
+- Cuadrante: ${leadData.zona}
+- Timing: ${leadData.timing}
 
-            const phone = "595991712966";
-            const text = `Hola Jairo, configuré mi perfil Alpha en la terminal Century 21 Bonanza:\n\n` +
-                         `🎯 Objetivo: ${leadData.objetivo}\n` +
-                         `💰 Rango: ${leadData.rango}\n` +
-                         `📍 Cuadrante: ${leadData.zona}\n` +
-                         `⏳ Timing: ${leadData.timing}\n\n` +
-                         `Deseo recibir la hoja de ruta estratégica.`;
+Deseo recibir la hoja de ruta estrategica para esta configuracion.`;
+
             window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
         }
     </script>
