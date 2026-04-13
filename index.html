@@ -20,90 +20,70 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1600368874352763&ev=PageView&noscript=1"/></noscript>
     <style>
-        :root {
-            --gold: #c5a059; --white: #ffffff; --glass: rgba(15, 23, 42, 0.92);
-            --glass-border: rgba(255, 255, 255, 0.12); --slate: #8892b0;
-        }
-        body { 
-            background-color: #020617; background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover; background-attachment: fixed; background-position: center;
-            font-family: 'Inter', sans-serif; color: var(--white); min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0;
-        }
-        .glass-terminal { background: var(--glass); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 55px 45px; max-width: 850px; width: 95%; box-shadow: 0 40px 80px rgba(0,0,0,0.8); margin: 20px; }
-        .brand-header { font-size: 0.8rem; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 35px; font-weight: 800; }
-        h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 35px; line-height: 1.1; letter-spacing: -1px; }
+        :root { --gold: #c5a059; --glass: rgba(15, 23, 42, 0.92); --glass-border: rgba(255, 255, 255, 0.12); }
+        body { background-color: #020617; color: white; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0; }
+        .glass-terminal { background: var(--glass); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 50px; max-width: 800px; width: 95%; box-shadow: 0 40px 80px rgba(0,0,0,0.8); }
+        .brand-header { font-size: 0.75rem; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; font-weight: 800; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 30px; line-height: 1.1; }
         .highlight { color: var(--gold); }
-        .step-container { display: none; text-align: left; animation: fadeIn 0.4s ease-out; }
-        .step-container.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .question-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 30px; border-left: 5px solid var(--gold); padding-left: 18px; }
-        .name-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 22px; color: white; width: 100%; font-size: 1.3rem; margin-bottom: 25px; outline: none; transition: 0.3s; }
-        .name-input:focus { border-color: var(--gold); }
-        .option-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 14px; padding: 20px; margin-bottom: 14px; cursor: pointer; transition: 0.3s; }
-        .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.12); transform: translateX(8px); }
-        .option-card b { color: var(--gold); display: block; text-transform: uppercase; }
-        .btn-action { background: linear-gradient(135deg, var(--gold) 0%, #9c7e46 100%); color: #000; border: none; padding: 22px 45px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; box-shadow: 0 12px 30px rgba(197, 160, 89, 0.3); }
-        .investment-modules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 45px; padding: 30px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
-        .module-item b { display: block; font-size: 0.85rem; color: var(--gold); }
-        .terminal-footer { margin-top: 50px; display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 700; }
-        @media (max-width: 768px) { h1 { font-size: 2rem; } .investment-modules { grid-template-columns: repeat(2, 1fr); } }
+        .step-container { display: none; text-align: left; }
+        .step-container.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .question-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 25px; border-left: 4px solid var(--gold); padding-left: 15px; }
+        .name-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px; color: white; width: 100%; font-size: 1.2rem; margin-bottom: 20px; outline: none; }
+        .option-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 12px; padding: 18px; margin-bottom: 12px; cursor: pointer; transition: 0.3s; }
+        .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); transform: translateX(5px); }
+        .btn-action { background: linear-gradient(135deg, var(--gold) 0%, #9c7e46 100%); color: #000; border: none; padding: 20px 40px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; }
+        .investment-modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px; }
+        .module-item b { display: block; color: var(--gold); font-size: 0.8rem; }
+        .module-item span { font-size: 0.65rem; color: #8892b0; }
     </style>
 </head>
 <body>
     <div class="glass-terminal text-center">
         <div id="intro-view">
             <div class="brand-header">CENTURY 21 BONANZA // Jairo Prieto</div>
-            <h1>Ingeniería de <span class="highlight">Plusvalía</span> en Asunción</h1>
+            <h1>Ingeniería de <span class="highlight">Plusvalía</span></h1>
             <div class="investment-modules">
                 <div class="module-item"><b>Plusvalía</b><span>Pre-Pozo</span></div>
-                <div class="module-item"><b>Consolidación</b><span>Pozo Avanzado</span></div>
-                <div class="module-item"><b>Escala</b><span>Int. Compuesto</span></div>
-                <div class="module-item"><b>Renta</b><span>Flujo Soporte</span></div>
+                <div class="module-item"><b>Renta</b><span>Flujo</span></div>
             </div>
             <button class="btn-action w-auto" onclick="startProfiler()">Configurar Inversión</button>
         </div>
 
         <div id="step-0" class="step-container">
-            <div class="question-title">¿Cómo deberíamos dirigirnos a usted?</div>
+            <div class="question-title">¿Cómo debemos dirigirnos a usted?</div>
             <input type="text" id="user-name" class="name-input" placeholder="Nombre completo...">
             <button class="btn-action" onclick="saveName()">Continuar</button>
         </div>
 
         <div id="step-1" class="step-container">
-            <div class="question-title">¿Cuál es el objetivo principal?</div>
-            <div class="option-card" onclick="saveData('objetivo', 'Salida Rápida', 2)"><b>Arbitraje</b><span>Reventa en obra avanzada.</span></div>
-            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía Máxima', 2)"><b>Plusvalía</b><span>Captura desde fase semilla.</span></div>
-            <div class="option-card" onclick="saveData('objetivo', 'Renta Mensual', 2)"><b>Flujo</b><span>Generación de activos.</span></div>
+            <div class="question-title">Objetivo del Capital:</div>
+            <div class="option-card" onclick="saveData('objetivo', 'Arbitraje', 2)"><b>Salida Rápida</b></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía', 2)"><b>Plusvalía Máxima</b></div>
         </div>
 
         <div id="step-2" class="step-container">
-            <div class="question-title">Rango de asignación previsto:</div>
-            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50k - 100k</b><span>Tickets iniciales.</span></div>
-            <div class="option-card" onclick="saveData('rango', '100k-150k', 3)"><b>USD 100k - 150k</b><span>Unidades Premium.</span></div>
-            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a 150k</b><span>Multi-activo.</span></div>
+            <div class="question-title">Rango de Inversión:</div>
+            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50k - 100k</b></div>
+            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a 150k</b></div>
         </div>
 
         <div id="step-3" class="step-container">
-            <div class="question-title">Cuadrante de Posicionamiento:</div>
-            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>📍 EL NÚCLEO</b><span>Centro de liquidez.</span></div>
-            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>🚀 DERRAME NORTE</b><span>Crecimiento acelerado.</span></div>
-            <div class="option-card" onclick="saveData('zona', 'Villa Morra', 4)"><b>🏛️ DERRAME SUR</b><span>Zona consolidada.</span></div>
+            <div class="question-title">Zona de Interés:</div>
+            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>B° Jara / Mburucuya</b></div>
+            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>Eje Corporativo</b></div>
         </div>
 
         <div id="step-4" class="step-container">
-            <div class="question-title">Tiempo para ejecutar:</div>
-            <div class="option-card" onclick="saveData('timing', 'Inmediato', 5)"><b>Inmediato</b><span>0-30 días.</span></div>
-            <div class="option-card" onclick="saveData('timing', 'Corto Plazo', 5)"><b>90 días</b><span>Próximos 3 meses.</span></div>
+            <div class="question-title">Timing de Ejecución:</div>
+            <div class="option-card" onclick="saveData('timing', 'Inmediato', 5)"><b>Inmediato</b></div>
+            <div class="option-card" onclick="saveData('timing', '90 días', 5)"><b>Próximos 90 días</b></div>
         </div>
 
         <div id="step-5" class="step-container text-center">
-            <div class="question-title text-center">Configuración Finalizada</div>
+            <div class="question-title text-center">Perfil Finalizado</div>
             <button id="btn-final" class="btn-action" onclick="processLead()">RECIBIR ESTRATEGIA POR WHATSAPP</button>
-        </div>
-
-        <div class="terminal-footer">
-            <div>CENTURY 21 BONANZA // Jairo Prieto</div>
-            <div class="d-none d-md-block">STATUS: ALPHA // ASUNCIÓN 2026</div>
         </div>
     </div>
 
@@ -112,7 +92,7 @@
         function startProfiler() { document.getElementById('intro-view').style.display = 'none'; document.getElementById('step-0').classList.add('active'); }
         function saveName() { 
             const n = document.getElementById('user-name').value; 
-            if(!n) return alert("Por favor, ingresa tu nombre"); 
+            if(!n) return alert("Ingresa tu nombre"); 
             leadData.nombre = n; 
             document.getElementById('step-0').classList.remove('active'); 
             document.getElementById('step-1').classList.add('active'); 
@@ -124,15 +104,11 @@
         }
         async function processLead() {
             const btn = document.getElementById('btn-final');
-            btn.innerHTML = "PROCESANDO PERFIL..."; btn.disabled = true;
-
-            // Enviar a n8n sin bloquear la redirección
-            const webhookURL = "TU_URL_DE_N8N_AQUI"; // <--- PON TU URL AQUÍ
-            if(webhookURL !== "TU_URL_DE_N8N_AQUI") {
-                fetch(webhookURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(leadData) }).catch(e => console.log("n8n offline"));
-            }
-
-            // Construir parámetros y saltar a gracias.html
+            btn.innerHTML = "PROCESANDO..."; btn.disabled = true;
+            try {
+                // Reemplaza con tu URL de n8n si la tienes lista
+                await fetch("TU_WEBHOOK_N8N", { method: 'POST', mode: 'no-cors', body: JSON.stringify(leadData) });
+            } catch (e) { console.log("n8n offline"); }
             const params = new URLSearchParams(leadData).toString();
             window.location.href = "gracias.html?" + params;
         }
