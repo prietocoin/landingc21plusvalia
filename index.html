@@ -19,8 +19,7 @@
         .name-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; padding: 18px; color: white; width: 100%; font-size: 1.1rem; margin-bottom: 20px; outline: none; }
         .option-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; border: 1px solid transparent; }
         .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); }
-        .btn-action { background: var(--gold); color: #000; border: none; padding: 18px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; letter-spacing: 1px; transition: 0.3s; }
-        .btn-action:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-action { background: var(--gold); color: #000; border: none; padding: 18px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -32,8 +31,8 @@
         </div>
 
         <div id="step-0" class="step-container">
-            <div class="question-title">¿Cuál es su nombre completo?</div>
-            <input type="text" id="user-name" class="name-input" placeholder="Escriba aquí..." autocomplete="off">
+            <div class="question-title">¿Cuál es su nombre?</div>
+            <input type="text" id="user-name" class="name-input" placeholder="Nombre completo...">
             <button class="btn-action" onclick="saveName()">Continuar</button>
         </div>
 
@@ -51,14 +50,14 @@
 
         <div id="step-3" class="step-container">
             <div class="question-title">Zona Elegida:</div>
-            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>Barrio Jara / Mburucuya</b></div>
+            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>B° Jara / Mburucuyá</b></div>
             <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>Eje Corporativo</b></div>
         </div>
 
         <div id="step-4" class="step-container">
             <div class="question-title">Plazo de Ejecución:</div>
             <div class="option-card" onclick="saveData('timing', 'Inmediato', 5)"><b>Inmediato</b></div>
-            <div class="option-card" onclick="saveData('timing', '90 dias', 5)"><b>90 días</b></div>
+            <div class="option-card" onclick="saveData('timing', '90 días', 5)"><b>90 días</b></div>
         </div>
 
         <div id="step-5" class="step-container text-center">
@@ -69,39 +68,22 @@
 
     <script>
         let leadData = { nombre: '', objetivo: '', rango: '', zona: '', timing: '' };
-
-        function startProfiler() {
-            document.getElementById('intro-view').style.display = 'none';
-            document.getElementById('step-0').classList.add('active');
+        function startProfiler() { document.getElementById('intro-view').style.display = 'none'; document.getElementById('step-0').classList.add('active'); }
+        function saveName() { 
+            const n = document.getElementById('user-name').value; 
+            if(!n) return alert("Ingresa tu nombre"); 
+            leadData.nombre = n; 
+            document.getElementById('step-0').classList.remove('active'); 
+            document.getElementById('step-1').classList.add('active'); 
         }
-
-        function saveName() {
-            const n = document.getElementById('user-name').value;
-            if (!n) return alert("Ingresa tu nombre para continuar");
-            leadData.nombre = n;
-            document.getElementById('step-0').classList.remove('active');
-            document.getElementById('step-1').classList.add('active');
-        }
-
-        function saveData(k, v, s) {
-            leadData[k] = v;
-            document.querySelectorAll('.step-container').forEach(x => x.classList.remove('active'));
-            document.getElementById('step-' + s).classList.add('active');
+        function saveData(k, v, s) { 
+            leadData[k] = v; 
+            document.querySelectorAll('.step-container').forEach(x => x.classList.remove('active')); 
+            document.getElementById('step-'+s).classList.add('active'); 
         }
 
         function goToThanks() {
-            const btn = document.getElementById('btn-final');
-            btn.innerHTML = "CARGANDO...";
-            btn.disabled = true;
-
-            // Enviar a n8n (opcional)
-            fetch("https://n8n.jairoprieto.com/webhook/plusvalia", { 
-                method: 'POST', 
-                mode: 'no-cors', 
-                body: JSON.stringify(leadData) 
-            });
-
-            // Redirigir a gracias con parámetros
+            // REDIRECCIÓN DIRECTA A GRACIAS PASANDO LOS DATOS EN LA URL
             const params = new URLSearchParams(leadData).toString();
             window.location.href = "gracias.html?" + params;
         }
