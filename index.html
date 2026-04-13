@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal de Inversión | Jairo Prieto</title>
+    <title>Jairo Prieto | Century 21 Bonanza Terminal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { --gold: #c5a059; --glass: rgba(15, 23, 42, 0.95); --glass-border: rgba(255, 255, 255, 0.1); }
-        body { background-color: #020617; background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.9)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80'); background-size: cover; background-attachment: fixed; font-family: 'Inter', sans-serif; color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0; }
-        .glass-terminal { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; max-width: 700px; width: 95%; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
-        .brand-header { font-size: 0.7rem; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 25px; font-weight: 800; }
-        h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 25px; color: white; }
+        body { background-color: #020617; background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80'); background-size: cover; background-attachment: fixed; font-family: 'Inter', sans-serif; color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0; }
+        .glass-terminal { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 45px; max-width: 800px; width: 95%; box-shadow: 0 40px 80px rgba(0,0,0,0.8); }
+        .brand-header { font-size: 0.8rem; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 30px; font-weight: 800; }
+        h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 35px; line-height: 1.1; letter-spacing: -1px; }
         .highlight { color: var(--gold); }
         .step-container { display: none; text-align: left; }
-        .step-container.active { display: block; animation: fadeIn 0.3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .question-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; border-left: 4px solid var(--gold); padding-left: 12px; }
-        .name-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; padding: 18px; color: white; width: 100%; font-size: 1.1rem; margin-bottom: 20px; outline: none; }
-        .option-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; border: 1px solid transparent; }
-        .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); }
-        .btn-action { background: var(--gold); color: #000; border: none; padding: 18px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; letter-spacing: 1px; }
-        .terminal-footer { margin-top: 40px; display: flex; justify-content: space-between; font-size: 0.65rem; color: rgba(255,255,255,0.3); font-weight: 700; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-transform: uppercase; }
+        .step-container.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .question-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 25px; border-left: 5px solid var(--gold); padding-left: 18px; }
+        .name-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 22px; color: white; width: 100%; font-size: 1.3rem; margin-bottom: 25px; outline: none; }
+        .option-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 14px; padding: 20px; margin-bottom: 14px; cursor: pointer; transition: 0.3s; }
+        .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); transform: translateX(8px); }
+        .option-card b { color: var(--gold); display: block; text-transform: uppercase; font-size: 1rem; }
+        .btn-action { background: linear-gradient(135deg, var(--gold) 0%, #9c7e46 100%); color: #000; border: none; padding: 22px 45px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; box-shadow: 0 12px 30px rgba(197, 160, 89, 0.3); }
     </style>
 </head>
 <body>
     <div class="glass-terminal text-center">
         <div id="intro-view">
             <div class="brand-header">CENTURY 21 BONANZA // Jairo Prieto</div>
-            <h1>Ingeniería de <span class="highlight">Plusvalía</span></h1>
-            <button class="btn-action w-auto px-5" onclick="startProfiler()">Configurar Inversión</button>
+            <h1>Ingeniería de <span class="highlight">Plusvalía</span> en Asunción</h1>
+            <p class="mb-5 lead" style="color: #ccd6f6;">Tickets desde USD 50.000,00.</p>
+            <button class="btn-action w-auto" onclick="start()">Configurar Inversión</button>
         </div>
 
         <div id="step-0" class="step-container">
@@ -39,45 +40,43 @@
 
         <div id="step-1" class="step-container">
             <div class="question-title">Objetivo del Capital:</div>
-            <div class="option-card" onclick="saveData('objetivo', 'Arbitraje', 2)"><b>Salida Rápida (Reventa)</b></div>
-            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía', 2)"><b>Plusvalía Máxima</b></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Arbitraje', 2)"><b>Salida Rápida (Reventa)</b><span>Reventa en obra avanzada para liquidez.</span></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía Máxima', 2)"><b>Plusvalía Máxima</b><span>Captura de valor desde Lista Cero.</span></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Renta', 2)"><b>Renta y Escala</b><span>Flujo de caja a largo plazo.</span></div>
         </div>
 
         <div id="step-2" class="step-container">
             <div class="question-title">Rango de Inversión:</div>
-            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50k - 100k</b></div>
-            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a 150k</b></div>
+            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50.000 - 100.000</b></div>
+            <div class="option-card" onclick="saveData('rango', '100k-150k', 3)"><b>USD 100.000 - 150.000</b></div>
+            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a USD 150.000</b></div>
         </div>
 
         <div id="step-3" class="step-container">
             <div class="question-title">Zona Elegida:</div>
-            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>B° Jara / Mburucuyá</b></div>
-            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>Eje Corporativo</b></div>
+            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>🚀 DERRAME NORTE</b><span>Barrio Jara / Mburucuyá.</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>📍 EL NÚCLEO</b><span>Eje Corporativo.</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Villa Morra', 4)"><b>🏛️ DERRAME SUR</b><span>Villa Morra / Recoleta.</span></div>
         </div>
 
         <div id="step-4" class="step-container">
-            <div class="question-title">Plazo de Ejecución:</div>
-            <div class="option-card" onclick="saveData('timing', 'Inmediato', 5)"><b>Inmediato</b></div>
-            <div class="option-card" onclick="saveData('timing', '90 días', 5)"><b>90 días</b></div>
+            <div class="question-title">Tiempo para ejecutar:</div>
+            <div class="option-card" onclick="saveData('timing', 'Inmediato', 5)"><b>Inmediato (0-30 días)</b></div>
+            <div class="option-card" onclick="saveData('timing', '90 días', 5)"><b>Próximos 90 días</b></div>
         </div>
 
         <div id="step-5" class="step-container text-center">
             <div class="question-title text-center">Configuración Finalizada</div>
-            <button id="btn-final" class="btn-action" onclick="goToThanks()">RECIBIR ESTRATEGIA</button>
-        </div>
-
-        <div class="terminal-footer">
-            <div>CENTURY 21 BONANZA // Jairo Prieto</div>
-            <div>STATUS: MERCADO ALPHA // ASUNCIÓN 2026</div>
+            <button id="btn-final" class="btn-action" onclick="finish()">VER ESTRATEGIA FINAL</button>
         </div>
     </div>
 
     <script>
         let leadData = { nombre: '', objetivo: '', rango: '', zona: '', timing: '' };
-        function startProfiler() { document.getElementById('intro-view').style.display = 'none'; document.getElementById('step-0').classList.add('active'); }
+        function start() { document.getElementById('intro-view').style.display = 'none'; document.getElementById('step-0').classList.add('active'); }
         function saveName() { 
             const n = document.getElementById('user-name').value; 
-            if(!n) return alert("Ingresa tu nombre"); 
+            if(!n) return alert("Ingresa tu nombre");
             leadData.nombre = n; 
             document.getElementById('step-0').classList.remove('active'); 
             document.getElementById('step-1').classList.add('active'); 
@@ -87,12 +86,7 @@
             document.querySelectorAll('.step-container').forEach(x => x.classList.remove('active')); 
             document.getElementById('step-'+s).classList.add('active'); 
         }
-
-        function goToThanks() {
-            const btn = document.getElementById('btn-final');
-            btn.innerHTML = "GENERANDO..."; btn.disabled = true;
-            
-            // REDIRECCIÓN INTERNA A TU ARCHIVO gracias.html
+        function finish() {
             const params = new URLSearchParams(leadData).toString();
             window.location.href = "gracias.html?" + params;
         }
