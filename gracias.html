@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Gracias! | Century 21 Bonanza</title>
-    
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -19,6 +15,9 @@
     fbq('track', 'Lead', { content_name: 'Terminal Plusvalia', content_category: 'Real Estate' });
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1600368874352763&ev=PageView&noscript=1"/></noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Perfil Validado! | Century 21 Bonanza</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -27,9 +26,11 @@
     </style>
 </head>
 <body class="bg-white text-black min-h-screen flex flex-col items-center justify-center p-6 text-center">
+
     <div class="mb-6 text-[#c4a47c] animate-bounce">
         <i class="fas fa-check-circle text-7xl md:text-8xl"></i>
     </div>
+
     <h1 class="text-4xl md:text-6xl font-black uppercase mb-4 tracking-tighter leading-none">¡Perfil <span class="text-[#c4a47c]">Alpha</span> Listo!</h1>
     <p class="text-gray-500 text-xs md:text-sm tracking-[0.2em] uppercase mb-10 max-w-sm mx-auto">Tus datos han sido registrados en la terminal. Pulsa el botón para recibir tu hoja de ruta estratégica.</p>
     
@@ -44,6 +45,7 @@
     </div>
 
     <script>
+        // Leemos los datos que vienen del Index
         const urlParams = new URLSearchParams(window.location.search);
         const d = {
             nombre: urlParams.get('nombre') || 'Inversor',
@@ -52,12 +54,15 @@
             zona: urlParams.get('zona') || 'Asunción',
             timing: urlParams.get('timing') || 'Hoy'
         };
+        
+        // Armamos el mensaje para WhatsApp
         const message = `Hola Jairo, soy ${d.nombre}. Validé mi perfil Alpha:
 - Objetivo: ${d.objetivo}
 - Rango: ${d.rango}
 - Zona: ${d.zona}
 - Timing: ${d.timing}
-Deseo mi hoja de ruta de plusvalía para TownCenter.`;
+Deseo mi hoja de ruta estratégica.`;
+        
         document.getElementById('btnWhatsapp').href = `https://wa.me/595994325713?text=${encodeURIComponent(message)}`;
     </script>
 </body>
