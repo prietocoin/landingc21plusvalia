@@ -21,15 +21,15 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1600368874352763&ev=PageView&noscript=1"/></noscript>
     <style>
         :root {
-            --gold: #c5a059; --white: #ffffff; --glass: rgba(15, 23, 42, 0.88);
+            --gold: #c5a059; --white: #ffffff; --glass: rgba(15, 23, 42, 0.92);
             --glass-border: rgba(255, 255, 255, 0.12); --slate: #8892b0;
         }
         body { 
-            background-color: #020617; background-image: linear-gradient(rgba(2, 6, 23, 0.75), rgba(2, 6, 23, 0.9)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80');
+            background-color: #020617; background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=80');
             background-size: cover; background-attachment: fixed; background-position: center;
             font-family: 'Inter', sans-serif; color: var(--white); min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0;
         }
-        .glass-terminal { background: var(--glass); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 55px 45px; max-width: 850px; width: 95%; box-shadow: 0 30px 60px rgba(0,0,0,0.7); margin: 20px; }
+        .glass-terminal { background: var(--glass); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 55px 45px; max-width: 850px; width: 95%; box-shadow: 0 40px 80px rgba(0,0,0,0.8); margin: 20px; }
         .brand-header { font-size: 0.8rem; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 35px; font-weight: 800; }
         h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 35px; line-height: 1.1; letter-spacing: -1px; }
         .highlight { color: var(--gold); }
@@ -37,13 +37,15 @@
         .step-container.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         .question-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 30px; border-left: 5px solid var(--gold); padding-left: 18px; }
-        .name-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 22px; color: white; width: 100%; font-size: 1.3rem; margin-bottom: 25px; outline: none; }
+        .name-input { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; padding: 22px; color: white; width: 100%; font-size: 1.3rem; margin-bottom: 25px; outline: none; transition: 0.3s; }
+        .name-input:focus { border-color: var(--gold); }
         .option-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 14px; padding: 20px; margin-bottom: 14px; cursor: pointer; transition: 0.3s; }
         .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.12); transform: translateX(8px); }
         .option-card b { color: var(--gold); display: block; text-transform: uppercase; }
-        .btn-action { background: linear-gradient(135deg, var(--gold) 0%, #9c7e46 100%); color: #000; border: none; padding: 22px 45px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; }
+        .btn-action { background: linear-gradient(135deg, var(--gold) 0%, #9c7e46 100%); color: #000; border: none; padding: 22px 45px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; box-shadow: 0 12px 30px rgba(197, 160, 89, 0.3); }
         .investment-modules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 45px; padding: 30px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
         .module-item b { display: block; font-size: 0.85rem; color: var(--gold); }
+        .terminal-footer { margin-top: 50px; display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 700; }
         @media (max-width: 768px) { h1 { font-size: 2rem; } .investment-modules { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
@@ -69,35 +71,39 @@
 
         <div id="step-1" class="step-container">
             <div class="question-title">¿Cuál es el objetivo principal?</div>
-            <div class="option-card" onclick="saveData('objetivo', 'Arbitraje', 2)"><b>Salida Rápida</b><span>Reventa en obra avanzada.</span></div>
-            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía', 2)"><b>Plusvalía Máxima</b><span>Captura desde fase cero.</span></div>
-            <div class="option-card" onclick="saveData('objetivo', 'Renta', 2)"><b>Renta y Escala</b><span>Interés compuesto.</span></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Salida Rápida', 2)"><b>Arbitraje</b><span>Reventa en obra avanzada.</span></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía Máxima', 2)"><b>Plusvalía</b><span>Captura desde fase semilla.</span></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Renta Mensual', 2)"><b>Flujo</b><span>Generación de activos.</span></div>
         </div>
 
         <div id="step-2" class="step-container">
             <div class="question-title">Rango de asignación previsto:</div>
-            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50k - 100k</b><span>Unidades eficaces.</span></div>
+            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50k - 100k</b><span>Tickets iniciales.</span></div>
             <div class="option-card" onclick="saveData('rango', '100k-150k', 3)"><b>USD 100k - 150k</b><span>Unidades Premium.</span></div>
-            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a 150k</b><span>Portafolio multi-activo.</span></div>
+            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a 150k</b><span>Multi-activo.</span></div>
         </div>
 
         <div id="step-3" class="step-container">
             <div class="question-title">Cuadrante de Posicionamiento:</div>
-            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>📍 EL NÚCLEO</b><span>Alta renta.</span></div>
-            <div class="option-card" onclick="saveData('zona', 'Barrio Jara / Mburucuya', 4)"><b>🚀 DERRAME NORTE</b><span>Plusvalía top.</span></div>
-            <div class="option-card" onclick="saveData('zona', 'Villa Morra', 4)"><b>🏛️ DERRAME SUR</b><span>Consolidado.</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>📍 EL NÚCLEO</b><span>Centro de liquidez.</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>🚀 DERRAME NORTE</b><span>Crecimiento acelerado.</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Villa Morra', 4)"><b>🏛️ DERRAME SUR</b><span>Zona consolidada.</span></div>
         </div>
 
         <div id="step-4" class="step-container">
             <div class="question-title">Tiempo para ejecutar:</div>
             <div class="option-card" onclick="saveData('timing', 'Inmediato', 5)"><b>Inmediato</b><span>0-30 días.</span></div>
-            <div class="option-card" onclick="saveData('timing', '90 días', 5)"><b>Corto Plazo</b><span>Próximos 3 meses.</span></div>
+            <div class="option-card" onclick="saveData('timing', 'Corto Plazo', 5)"><b>90 días</b><span>Próximos 3 meses.</span></div>
         </div>
 
         <div id="step-5" class="step-container text-center">
             <div class="question-title text-center">Configuración Finalizada</div>
-            <p class="text-secondary mb-4">La terminal ha procesado su hoja de ruta.</p>
             <button id="btn-final" class="btn-action" onclick="processLead()">RECIBIR ESTRATEGIA POR WHATSAPP</button>
+        </div>
+
+        <div class="terminal-footer">
+            <div>CENTURY 21 BONANZA // Jairo Prieto</div>
+            <div class="d-none d-md-block">STATUS: ALPHA // ASUNCIÓN 2026</div>
         </div>
     </div>
 
@@ -106,7 +112,7 @@
         function startProfiler() { document.getElementById('intro-view').style.display = 'none'; document.getElementById('step-0').classList.add('active'); }
         function saveName() { 
             const n = document.getElementById('user-name').value; 
-            if(!n) return alert("Ingresa tu nombre"); 
+            if(!n) return alert("Por favor, ingresa tu nombre"); 
             leadData.nombre = n; 
             document.getElementById('step-0').classList.remove('active'); 
             document.getElementById('step-1').classList.add('active'); 
@@ -118,11 +124,15 @@
         }
         async function processLead() {
             const btn = document.getElementById('btn-final');
-            btn.innerHTML = "GENERANDO HOJA DE RUTA..."; btn.disabled = true;
-            try {
-                // CAMBIA ESTA URL POR TU WEBHOOK REAL DE n8n
-                await fetch("https://tu-n8n-url.com/webhook/plusvalia", { method: 'POST', mode: 'no-cors', body: JSON.stringify(leadData) });
-            } catch (e) { console.log("n8n ok"); }
+            btn.innerHTML = "PROCESANDO PERFIL..."; btn.disabled = true;
+
+            // Enviar a n8n sin bloquear la redirección
+            const webhookURL = "TU_URL_DE_N8N_AQUI"; // <--- PON TU URL AQUÍ
+            if(webhookURL !== "TU_URL_DE_N8N_AQUI") {
+                fetch(webhookURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(leadData) }).catch(e => console.log("n8n offline"));
+            }
+
+            // Construir parámetros y saltar a gracias.html
             const params = new URLSearchParams(leadData).toString();
             window.location.href = "gracias.html?" + params;
         }
