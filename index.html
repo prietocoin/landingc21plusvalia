@@ -20,7 +20,9 @@
         .option-card { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: 14px; padding: 20px; margin-bottom: 14px; cursor: pointer; transition: 0.3s; }
         .option-card:hover { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); transform: translateX(8px); }
         .option-card b { color: var(--gold); display: block; text-transform: uppercase; font-size: 1rem; }
+        .option-card span { font-size: 0.85rem; color: #8892b0; }
         .btn-action { background: linear-gradient(135deg, var(--gold) 0%, #9c7e46 100%); color: #000; border: none; padding: 22px 45px; font-weight: 900; border-radius: 8px; text-transform: uppercase; width: 100%; box-shadow: 0 12px 30px rgba(197, 160, 89, 0.3); }
+        .terminal-footer { margin-top: 40px; display: flex; justify-content: space-between; font-size: 0.65rem; color: rgba(255,255,255,0.3); font-weight: 700; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -28,46 +30,52 @@
         <div id="intro-view">
             <div class="brand-header">CENTURY 21 BONANZA // Jairo Prieto</div>
             <h1>Ingeniería de <span class="highlight">Plusvalía</span> en Asunción</h1>
-            <p class="mb-5 lead" style="color: #ccd6f6;">Tickets desde USD 50.000,00.</p>
-            <button class="btn-action w-auto" onclick="start()">Configurar Inversión</button>
+            <p class="mb-5 lead" style="color: #ccd6f6;">Diagnóstico patrimonial y estrategia de inversión.</p>
+            <button class="btn-action w-auto px-5" onclick="start()">Configurar Inversión</button>
         </div>
 
         <div id="step-0" class="step-container">
-            <div class="question-title">¿Cuál es su nombre?</div>
+            <div class="question-title">¿Cuál es su nombre completo?</div>
             <input type="text" id="user-name" class="name-input" placeholder="Nombre completo...">
             <button class="btn-action" onclick="saveName()">Continuar</button>
         </div>
 
         <div id="step-1" class="step-container">
-            <div class="question-title">Objetivo del Capital:</div>
-            <div class="option-card" onclick="saveData('objetivo', 'Arbitraje', 2)"><b>Salida Rápida (Reventa)</b><span>Reventa en obra avanzada para liquidez.</span></div>
-            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía Máxima', 2)"><b>Plusvalía Máxima</b><span>Captura de valor desde Lista Cero.</span></div>
-            <div class="option-card" onclick="saveData('objetivo', 'Renta', 2)"><b>Renta y Escala</b><span>Flujo de caja a largo plazo.</span></div>
+            <div class="question-title">¿Cuál es el objetivo principal?</div>
+            <div class="option-card" onclick="saveData('objetivo', 'Salida Rápida', 2)"><b>Arbitraje</b><span>Salida rápida / Reventa en obra avanzada.</span></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Plusvalía Máxima', 2)"><b>Plusvalía Máxima</b><span>Captura desde fase cero / Pre-Pozo.</span></div>
+            <div class="option-card" onclick="saveData('objetivo', 'Renta', 2)"><b>Renta y Escala</b><span>Alquiler y acumulación de activos.</span></div>
         </div>
 
         <div id="step-2" class="step-container">
-            <div class="question-title">Rango de Inversión:</div>
-            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50.000 - 100.000</b></div>
-            <div class="option-card" onclick="saveData('rango', '100k-150k', 3)"><b>USD 100.000 - 150.000</b></div>
-            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a USD 150.000</b></div>
+            <div class="question-title">Rango de asignación previsto:</div>
+            <div class="option-card" onclick="saveData('rango', '50k-100k', 3)"><b>USD 50.000 - 100.000</b><span>Unidades de entrada.</span></div>
+            <div class="option-card" onclick="saveData('rango', '100k-150k', 3)"><b>USD 100.000 - 150.000</b><span>Unidades Premium.</span></div>
+            <div class="option-card" onclick="saveData('rango', '+150k', 3)"><b>Superior a USD 150.000</b><span>Multi-activo o portafolio.</span></div>
         </div>
 
         <div id="step-3" class="step-container">
-            <div class="question-title">Zona Elegida:</div>
-            <div class="option-card" onclick="saveData('zona', 'Barrio Jara', 4)"><b>🚀 DERRAME NORTE</b><span>Barrio Jara / Mburucuyá.</span></div>
-            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>📍 EL NÚCLEO</b><span>Eje Corporativo.</span></div>
-            <div class="option-card" onclick="saveData('zona', 'Villa Morra', 4)"><b>🏛️ DERRAME SUR</b><span>Villa Morra / Recoleta.</span></div>
+            <div class="question-title">Cuadrante de Posicionamiento:</div>
+            <div class="option-card" onclick="saveData('zona', 'Eje Corporativo', 4)"><b>📍 EL NÚCLEO</b><span>Eje Corporativo / Centro de liquidez.</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Barrio Jara / Mburucuyá', 4)"><b>🚀 DERRAME NORTE</b><span>Barrio Jara / Mburucuyá (Plusvalía).</span></div>
+            <div class="option-card" onclick="saveData('zona', 'Villa Morra / Recoleta', 4)"><b>🏛️ DERRAME SUR</b><span>Villa Morra / Recoleta (Consolidado).</span></div>
         </div>
 
         <div id="step-4" class="step-container">
             <div class="question-title">Tiempo para ejecutar:</div>
             <div class="option-card" onclick="saveData('timing', 'Inmediato', 5)"><b>Inmediato (0-30 días)</b></div>
-            <div class="option-card" onclick="saveData('timing', '90 días', 5)"><b>Próximos 90 días</b></div>
+            <div class="option-card" onclick="saveData('timing', '90 días', 5)"><b>Próximos 3 meses</b></div>
         </div>
 
         <div id="step-5" class="step-container text-center">
             <div class="question-title text-center">Configuración Finalizada</div>
+            <p class="mb-4 text-secondary">La terminal ha procesado su hoja de ruta estratégica.</p>
             <button id="btn-final" class="btn-action" onclick="finish()">VER ESTRATEGIA FINAL</button>
+        </div>
+
+        <div class="terminal-footer">
+            <div>CENTURY 21 BONANZA // Jairo Prieto</div>
+            <div>STATUS: MERCADO ALPHA // ASUNCIÓN 2026</div>
         </div>
     </div>
 
@@ -76,7 +84,7 @@
         function start() { document.getElementById('intro-view').style.display = 'none'; document.getElementById('step-0').classList.add('active'); }
         function saveName() { 
             const n = document.getElementById('user-name').value; 
-            if(!n) return alert("Ingresa tu nombre");
+            if(!n) return alert("Por favor, ingrese su nombre");
             leadData.nombre = n; 
             document.getElementById('step-0').classList.remove('active'); 
             document.getElementById('step-1').classList.add('active'); 
@@ -87,6 +95,7 @@
             document.getElementById('step-'+s).classList.add('active'); 
         }
         function finish() {
+            // REDIRECCIÓN A GRACIAS CON TODA LA SEGMENTACIÓN
             const params = new URLSearchParams(leadData).toString();
             window.location.href = "gracias.html?" + params;
         }
