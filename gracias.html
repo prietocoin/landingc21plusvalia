@@ -12,12 +12,17 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1600368874352763');
     fbq('track', 'PageView');
-    fbq('track', 'Lead'); // Esto le confirma a Meta que es un cliente potencial real
+    fbq('track', 'Lead', {
+        content_name: 'TownCenter Barrio Jara',
+        content_category: 'Real Estate'
+    }); 
     </script>
-    
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1600368874352763&ev=PageView&noscript=1"
+    /></noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Gracias! | TownCenter Barrio Jara</title>
+    <title>¡Gracias! | Century 21 Bonanza</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%20%2290%22>🏢</text></svg>">
     
@@ -38,40 +43,49 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
         body { font-family: 'Montserrat', sans-serif; }
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-white text-c21black antialiased min-h-screen flex flex-col items-center justify-center p-6 text-center">
 
-    <div class="mb-8 text-c21gold animate-bounce">
-        <i class="fas fa-city text-6xl md:text-8xl"></i>
-    </div>
+    <div class="fade-in">
+        <div class="mb-8 text-c21gold animate-bounce">
+            <i class="fas fa-check-circle text-6xl md:text-8xl"></i>
+        </div>
 
-    <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-4">
-        ¡Casi <span class="text-c21gold">Listo!</span>
-    </h1>
-    
-    <p class="text-sm md:text-base font-light tracking-[0.2em] uppercase text-gray-500 mb-10 max-w-md">
-        Tus datos han sido registrados con éxito. Para recibir la ficha técnica de <span class="font-bold text-c21black">TownCenter Barrio Jara</span>, haz clic en el botón de abajo.
-    </p>
+        <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-4">
+            ¡Perfil <span class="text-c21gold">Validado!</span>
+        </h1>
+        
+        <p class="text-sm md:text-base font-light tracking-[0.2em] uppercase text-gray-500 mb-10 max-w-md mx-auto">
+            Tus datos han sido registrados en la terminal. Para recibir la hoja de ruta de <span class="font-bold text-c21black">Plusvalía</span>, haz clic en el botón de abajo.
+        </p>
 
-    <a id="btnWhatsapp" href="#" class="bg-c21black text-c21gold px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-c21gold hover:text-white transition-all shadow-2xl flex items-center gap-4 rounded-sm scale-110">
-        <i class="fab fa-whatsapp text-xl"></i>
-        Abrir WhatsApp Ahora
-    </a>
+        <div class="flex justify-center">
+            <a id="btnWhatsapp" href="#" class="bg-c21black text-c21gold px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-c21gold hover:text-white transition-all shadow-2xl flex items-center gap-4 rounded-sm scale-110 active:scale-95">
+                <i class="fab fa-whatsapp text-xl"></i>
+                Abrir WhatsApp Ahora
+            </a>
+        </div>
 
-    <div class="mt-20 flex flex-col items-center">
-        <span class="text-lg font-bold tracking-tighter leading-none uppercase">Century 21</span>
-        <span class="text-[9px] font-light text-gray-400 tracking-[0.2em] uppercase">Bonanza</span>
+        <div class="mt-24 flex flex-col items-center opacity-60">
+            <span class="text-lg font-bold tracking-tighter leading-none uppercase">Century 21</span>
+            <span class="text-[9px] font-light text-gray-400 tracking-[0.2em] uppercase">Bonanza // Jairo Prieto</span>
+        </div>
     </div>
 
     <script>
-        // Recuperar nombre del cliente de la URL (si lo pasas desde el index)
+        // Capturar parámetros de la URL
         const urlParams = new URLSearchParams(window.location.search);
-        const nombre = urlParams.get('nombre') || 'interesado';
+        const nombre = urlParams.get('nombre') || 'Inversor';
+        const objetivo = urlParams.get('objetivo') || 'Plusvalía';
         
-        // Configurar el link de WhatsApp
-        const waLink = `https://wa.me/595994325713?text=Hola,%20soy%20${encodeURIComponent(nombre)}.%20Acabo%20de%20registrarme%20en%20la%20web%20y%20quiero%20la%20ficha%20de%20TownCenter.`;
-        document.getElementById('btnWhatsapp').href = waLink;
+        // Configurar el link de WhatsApp dinámico
+        const phone = "595994325713";
+        const message = `Hola Jairo, soy ${nombre}. Acabo de validar mi perfil en la terminal con objetivo: ${objetivo}. Deseo recibir la ficha técnica de TownCenter y la hoja de ruta de plusvalía.`;
+        
+        document.getElementById('btnWhatsapp').href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     </script>
 </body>
 </html>
