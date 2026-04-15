@@ -14,11 +14,18 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1600368874352763');
+    
+    // USAMOS TU NUEVO ID ACTUALIZADO
+    fbq('init', '1311042437546028'); 
+    
     // Registramos la conversión final: Lead
-    fbq('track', 'Lead'); 
+    fbq('track', 'Lead', {
+        content_category: 'Real Estate Inversion',
+        content_name: 'Validacion Perfil Alpha'
+    }); 
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1600368874352763&ev=Lead&noscript=1"/></noscript>
+    <noscript><img height="1" width="1" style="display:none" 
+    src="https://www.facebook.com/tr?id=1311042437546028&ev=Lead&noscript=1"/></noscript>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -54,7 +61,7 @@
         const zona = urlParams.get('zona') || 'Asunción';
         const timing = urlParams.get('timing') || 'Hoy';
         
-        // CONSTRUIMOS EL MENSAJE
+        // CONSTRUIMOS EL MENSAJE CON TU NÚMERO VALIDADO (+595994325713)
         const message = `Hola Jairo, soy ${nombre}. Acabo de validar mi perfil Alpha en la terminal:
 - Objetivo: ${objetivo}
 - Rango: ${rango}
